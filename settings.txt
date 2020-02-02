@@ -1,6 +1,4 @@
-"did":"127904145","token":"3fe80b2aa08795e83bb3765469709b07", "ip":"192.168.1.3"
-"did":"127914191","token":"e1ef4f9f97aaf257f54270adf2d998f3", "ip":"192.168.1.2"
-but how to run? from python??
+"did":"127904145","token":"9a959331e150c3a6919df3433952938e", "ip":"192.168.1.3" - heating
+"did":"127914191","token":"e1ef4f9f97aaf257f54270adf2d998f3", "ip":"192.168.1.2" - light
+miplug --ip 192.168.1.3 --token 9a959331e150c3a6919df3433952938e status
 miplug --ip 192.168.1.2 --token e1ef4f9f97aaf257f54270adf2d998f3 status
-miplug --ip 192.168.1.2 --token e1ef4f9f97aaf257f54270adf2d998f3 on
-miplug --ip 192.168.1.2 --token e1ef4f9f97aaf257f54270adf2d998f3 off
