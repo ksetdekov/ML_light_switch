@@ -35,5 +35,5 @@ while True:
     txt2=result2.stdout.decode("utf-8")
     status2 = txt2.split()[1]    
     write_status(status1,status2)
-    graph(status1)
+    #graph(status1)
     plt.pause(60)
