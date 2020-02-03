@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 cpu_temp.csv
 status.csv
+log.txt
