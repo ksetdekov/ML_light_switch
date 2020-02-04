@@ -27,7 +27,7 @@ def graph(status1):
     plt.plot(x,y)
     plt.draw()
 
-Goodvalues = ['TRUE', 'FALSE']
+Goodvalues = ['True', 'False']
 
 def responseformat(resp):
     if resp in Goodvalues:
