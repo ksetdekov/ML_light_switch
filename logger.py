@@ -7,14 +7,6 @@ plt.ion()
 x = []
 y = []
 
-def str_to_bool(s):
-    if s == 'True':
-         return True
-    elif s == 'False':
-         return False
-    else:
-         raise ValueError("Cannot covert {} to a bool".format(s))
-
 def write_status(status1,status2):
     with open("/home/pi/Documents/testing/status.csv", "a") as log:
         log.write("{0},{1}\n".format(strftime("%Y-%m-%d %H:%M:%S"),str(",".join([status1,status2]))))
