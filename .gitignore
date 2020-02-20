@@ -130,3 +130,5 @@ dmypy.json
 cpu_temp.csv
 status.csv
 log.txt
+
+cookies.txt
