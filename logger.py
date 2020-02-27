@@ -43,13 +43,8 @@ token2 = '9a959331e150c3a6919df3433952938e'
 plug2 = ChuangmiPlug(ip2, token2, model="chuangmi.plug.m3")
 
 while True:
-    txt1 = str(plug1.status())
-    status1 = txt1.split()[1]
-    status1 = responseformat(status1)
-
-    txt2 = str(plug2.status())
-    status2 = txt2.split()[1]
-    status1 = responseformat(status1)
+    status1 = responseformat(str(plug1.status().is_on))
+    status2 = responseformat(str(plug2.status().is_on))
     distances = string_distances()
 
     write_status(status1, status2, distances)
