@@ -1,15 +1,18 @@
 import subprocess
 from time import strftime, time
+
 import matplotlib.pyplot as plt
+
+from getlocation import string_distances
 
 plt.ion()
 x = []
 y = []
 
 
-def write_status(st1, st2):
+def write_status(st1, st2, st3):
     with open("/home/pi/Documents/testing/status.csv", "a") as log:
-        log.write("{0},{1}\n".format(strftime("%Y-%m-%d %H:%M:%S"), str(",".join([st1, st2]))))
+        log.write("{0},{1}\n".format(strftime("%Y-%m-%d %H:%M:%S"), str(",".join([st1, st2, st3]))))
 
 
 def graph(variable1):
@@ -43,7 +46,8 @@ while True:
     txt2 = result2.stdout.decode("utf-8")
     status2 = txt2.split()[1]
     status1 = responseformat(status1)
+    distances = string_distances()
 
-    write_status(status1, status2)
+    write_status(status1, status2, distances)
     # graph(status1)
     plt.pause(60)
