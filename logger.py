@@ -45,6 +45,9 @@ plug2 = ChuangmiPlug(ip2, token2, model="chuangmi.plug.m3")
 while True:
     status1 = responseformat(str(plug1.status().is_on))
     status2 = responseformat(str(plug2.status().is_on))
+    # TODO fix this part to handle no data correctly miio.exceptions.DeviceException: Unable to discover the device
+    #  192.168.1.2 socket.timeout: timed out
+
     distances = string_distances()
 
     write_status(status1, status2, distances)
