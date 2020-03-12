@@ -3,3 +3,6 @@ matplotlib
 python-miio
 -e git+https://github.com/nathanrooy/spatial-analysis.git#egg=spatial
 pyTelegramBotAPI
+PySocks
+requests
+urllib3
