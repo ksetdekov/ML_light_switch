@@ -57,7 +57,7 @@ while True:
     status2 = responseformat(status2)
     try:
         distances = string_distances()
-    except (OSError, urllib3.exceptions.NewConnectionError):
+    except (OSError, ConnectionError):
         distances = str(",".join(["None", "None", "None", "None", "None", "None", "None", "None"]))
 
     write_status(status1, status2, distances)
