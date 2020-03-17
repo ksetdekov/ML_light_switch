@@ -55,7 +55,10 @@ while True:
     txt2 = result2.stdout.decode("utf-8")
     status2 = txt2.split()[1]
     status2 = responseformat(status2)
-    distances = string_distances()
+    try:
+        distances = string_distances()
+    except (OSError, urllib3.exceptions.NewConnectionError):
+        distances = str(",".join(["None", "None", "None", "None", "None", "None", "None", "None"]))
 
     write_status(status1, status2, distances)
     # graph(status1)
