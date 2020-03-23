@@ -1,8 +1,8 @@
 import telebot
 from telebot import apihelper
 
-ip = '51.158.114.177'
-port = '8811'
+ip = '94.102.52.29'
+port = '1080'
 
 apihelper.proxy = {
     'https': 'socks5h://{}:{}'.format(ip, port)
