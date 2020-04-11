@@ -3,3 +3,6 @@ mapscookiegettercli
 matplotlib
 python-miio
 -e git+https://github.com/nathanrooy/spatial-analysis.git#egg=spatial
+Flask
+Flask-Login
+Werkzeug
