@@ -1,0 +1,58 @@
+SmartHome 14438:[DEBUG]-10-13 22:38:14.637 downloadDeviceList issue device_list req
+SmartHome 14439:[DEBUG]-10-13 22:38:14.649 doScanDeviceList end
+SmartHome 14439:[DEBUG]-10-13 22:38:14.654 notifyScanState state=START_SUCCESS,mScanningState=1,mDownloaded=false,mWorkingList size=1
+SmartHome 14439:[DEBUG]-10-13 22:38:14.660 SmartHomeDeviceManager:scanDeviceList onSuccess result=0
+SmartHome 14439:[DEBUG]-10-13 22:38:14.674 forceUpdateAllData:mIsForcingRefreshing=false
+SmartHome 14439:[DEBUG]-10-13 22:38:14.677 forceUpdateAllData:startSyncFromServer loginstate=4,update interval=1602617894676,mSynchronizing=false
+SmartHome 14441:[DEBUG]-10-13 22:38:14.682 forceUpdateAllData:CUDM syncMostUsedDevice mSynchronizing=false,loginstate=4
+SmartHome 14442:[DEBUG]-10-13 22:38:14.684 SmartHomeDeviceManager:updateDevice useCache: false
+SmartHome 14442:[DEBUG]-10-13 22:38:14.696 click_device_list onPluginChanged recordList size 0 java.lang.Throwable
+    at com.xiaomi.smarthome.frame.core.CoreApi.a(SourceFile:2319)
+    at com.xiaomi.smarthome.frame.core.CoreApi.Q(SourceFile:2253)
+    at com.xiaomi.smarthome.frame.core.CoreApi.P(SourceFile:2241)
+    at com.xiaomi.smarthome.homeroom.HomeManager.F(SourceFile:4207)
+    at com.xiaomi.smarthome.newui.DeviceMainPage$27.a(SourceFile:1394)
+    at com.xiaomi.smarthome.homeroom.HomeManager$3.a(SourceFile:414)
+    at com.xiaomi.smarthome.homeroom.HomeManager$3.onNext(SourceFile:404)
+    at io.reactivex.internal.operators.observable.ObservableSubscribeOn$SubscribeOnObserver.onNext(SourceFile:58)
+    at io.reactivex.internal.operators.observable.ObservableFlatMap$MergeObserver.tryEmit(SourceFile:265)
+    at io.reactivex.internal.operators.observable.ObservableFlatMap$InnerObserver.onNext(SourceFile:562)
+    at io.reactivex.internal.operators.observable.ObservableCreate$CreateEmitter.onNext(SourceFile:66)
+    at com.xiaomi.smarthome.homeroom.HomeManager$4$1.subscribe(SourceFile:361)
+    at io.reactivex.internal.operators.observable.ObservableCreate.subscribeActual(SourceFile:40)
+    at io.reactivex.Observable.subscribe(SourceFile:12197)
+    at io.reactivex.internal.operators.observable.ObservableFlatMap$MergeObserver.subscribeInner(SourceFile:165)
+    at io.reactivex.internal.operators.observable.ObservableFlatMap$MergeObserver.onNext(SourceFile:139)
+    at io.reactivex.internal.operators.observable.ObservableCreate$CreateEmitter.onNext(SourceFile:66)
+    at com.xiaomi.smarthome.homeroom.HomeManager$5$1.a(SourceFile:342)
+    at com.xiaomi.smarthome.homeroom.HomeManager$5$1.onSuccess(SourceFile:318)
+    at com.xiaomi.smarthome.frame.AsyncCallback$Dispatcher.handleMessage(SourceFile:81)
+    at android.os.Handler.dispatchMessage(Handler.java:106)
+    at android.os.Looper.loop(Looper.java:223)
+    at android.app.ActivityThread.main(ActivityThread.java:7656)
+    at java.lang.reflect.Method.invoke(Native Method)
+    at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:592)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:947)
+
+SmartHome 14443:[DEBUG]-10-13 22:38:14.697 forceUpdateAllData:mHomeUpdating=true,mCommonDeviceUpdating=true,device count=0,pluginrecord size=0,SmartHomeDeviceManager isRefreshing=true
+SmartHome 14443:[DEBUG]-10-13 22:38:14.700 forceUpdateAllData:startSyncFromServer loginstate=4,update interval=1602617894700,mSynchronizing=true
+SmartHome 14443:[DEBUG]-10-13 22:38:14.704 downloadDeviceList device_list req onSuccess
+SmartHome 14443:[DEBUG]-10-13 22:38:14.740 forceUpdateAllData:ACTION_DATA_UPDATED received
+SmartHome 14443:[DEBUG]-10-13 22:38:14.753 processResult in result={"code":0,"message":"ok","result":{"list":[{"did":"127904145","token":"9881554e0c43a4f45a28823adf3d0825","longitude":"0.00000000","latitude":"0.00000000","name":"heater","pid":"0","localip":"192.168.1.26","mac":"04:CF:8C:43:DA:68","ssid":"hwifi","bssid":"74:44:01:7C:8B:06","parent_id":"","parent_model":"","show_mode":1,"model":"chuangmi.plug.hmi206","adminFlag":1,"shareFlag":0,"permitLevel":16,"isOnline":true,"desc":"Устройство в сети ","extra":{"isSetPincode":0,"fw_version":"1.3.9_0004","needVerifyCode":0,"isPasswordEncrypt":0},"uid":1665986329,"pd_id":65889,"password":"","p2p_id":"","rssi":-64,"family_id":0,"reset_flag":0},{"did":"127914191","token":"e1ef4f9f97aaf257f54270adf2d998f3","longitude":"0.00000000","latitude":"0.00000000","name":"spot","pid":"0","localip":"192.168.1.2","mac":"04:CF:8C:44:01:A6","ssid":"hwifi","bssid":"74:44:01:7C:8B:06","parent_id":"","parent_model":"","show_mode":1,"model":"chuangmi.plug.hmi206","adminFlag":1,"shareFlag":0,"permitLevel":16,"isOnline":true,"desc":"Устройство в сети ","extra":{"isSetPincode":0,"fw_version":"1.3.9_0004","needVerifyCode":0,"isPasswordEncrypt":0},"uid":1665986329,"pd_id":65889,"password":"","p2p_id":"","rssi":-73,"family_id":0,"reset_flag":0},{"did":"blt.6.120eu3kfksg00","token":"affdea7c057ca85c33c2542b","longitude":"0.00000000","latitude":"0.00000000","name":"Electric Scooter","pid":"6","localip":"31.173.87.85","mac":"D5:BD:8E:E4:5D:11","ssid":"","bssid":"","parent_id":"","parent_model":"","show_mode":1,"model":"ninebot.scooter.v1","adminFlag":1,"shareFlag":0,"permitLevel":16,"isOnline":false,"desc":"","extra":{"isSetPincode":0,"fw_version":"1.1.0_0002","needVerifyCode":0,"isPasswordEncrypt":0},"uid":1665986329,"pd_id":342,"password":"","p2p_id":"","rssi":0,"family_id":0,"reset_flag":0}],"virtualModels":[{"model":"zhimi.airpurifier.m1","state":0,"url":""},{"model":"yunmi.waterpurifier.v2","state":0,"url":""},{"model":"zimi.powerstrip.v2","state":0,"url":""}]}}
+SmartHome 14443:[DEBUG]-10-13 22:38:14.756 processResult jsonObject has no result field
+SmartHome 14513:[DEBUG]-10-13 22:38:14.775 downloadDeviceList start notifyScanState SYNC_SERVER_SUCCESS
+SmartHome 14514:[DEBUG]-10-13 22:38:14.776 notifyScanState state=SYNC_SERVER_SUCCESS,mScanningState=3,mDownloaded=true,mWorkingList size=1
+SmartHome 14514:[DEBUG]-10-13 22:38:14.779 SmartHomeDeviceManager:scanDeviceList onSuccess result=2
+SmartHome 14516:[DEBUG]-10-13 22:38:14.780 SmartHomeDeviceManager:getDeviceListFromCore start
+SmartHome 14517:[DEBUG]-10-13 22:38:14.814 forceUpdateAllData:ACTION_HOME_ROOM_UPDATED received
+SmartHome 15248:[DEBUG]-10-13 22:38:15.547 notifyClient UPDATE_DEVICE_LIST
+SmartHome 15249:[DEBUG]-10-13 22:38:15.562 SmartHomeDeviceManager:MyBroadcastReceiver onReceive in
+SmartHome 15249:[DEBUG]-10-13 22:38:15.563 SmartHomeDeviceManager:MyBroadcastReceiver onReceive 1430
+SmartHome 15249:[DEBUG]-10-13 22:38:15.564 SmartHomeDeviceManager:MyBroadcastReceiver onReceive 1435
+SmartHome 15249:[DEBUG]-10-13 22:38:15.565 SmartHomeDeviceManager:MyBroadcastReceiver onReceive 1437
+SmartHome 15250:[DEBUG]-10-13 22:38:15.566 SmartHomeDeviceManager:MyBroadcastReceiver onReceive receive ACTION_UPDATE_DEVICE_LIST
+SmartHome 15250:[DEBUG]-10-13 22:38:15.567 SmartHomeDeviceManager:getDeviceListFromCore start
+SmartHome 15250:[DEBUG]-10-13 22:38:15.571 SmartHomeDeviceManager:getDeviceList onSuccess: 6
+SmartHome 15250:[DEBUG]-10-13 22:38:15.571 SmartHomeDeviceManager:updateSearchList start
+SmartHome 15250:[DEBUG]-10-13 22:38:15.576 SmartHomeDeviceManager:updateSearchList finish, mForceUpdate = false, mForceUpdateCache = false
+SmartHome 15250:[DEBUG]-10-13 22:38:15.576 SmartHomeDeviceManager:updateInnerDevice, isDeviceReady = true
