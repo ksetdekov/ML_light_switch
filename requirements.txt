@@ -12,3 +12,4 @@ pyTelegramBotAPI
 PySocks
 requests
 urllib3
+Adafruit_DHT
