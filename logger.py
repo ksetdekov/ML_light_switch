@@ -13,7 +13,7 @@ def responseformat(resp):
     if resp in Goodvalues:
         return resp
     else:
-        return "nan"
+        return None
 
 
 if not os.path.exists('temperature.db'):
@@ -52,20 +52,26 @@ sensor = Adafruit_DHT.DHT11
 ip_pl = '192.168.1.2'
 token_pl = 'e1ef4f9f97aaf257f54270adf2d998f3'
 plug = ChuangmiPlug(ip_pl, token_pl, model="chuangmi.plug.m3")
-print(plug.status().is_on)
+# print(plug.status().is_on)
 
 # heater
 ip_h = '192.168.1.26'
 token_h = "9881554e0c43a4f45a28823adf3d0825"
 heater = ChuangmiPlug(ip_h, token_h, model="chuangmi.plug.m3")
-print(heater.status().is_on)
+# print(heater.status().is_on)
 
 while True:
-    status1 = plug.status().is_on
-    status1 = responseformat(status1)
+    try:
+        status1 = plug.status().is_on
+    except:
+        status1 = None
+    # status1 = responseformat(status1)
 
-    status2 = heater.status().is_on
-    status2 = responseformat(status2)
+    try:
+        status2 = heater.status().is_on
+    except:
+        status2 = None
+    # status2 = responseformat(status2)
 
     hum, temp = Adafruit_DHT.read_retry(sensor, 4)
     # hum, temp = (1, 1)
