@@ -1,12 +1,12 @@
 import datetime
+import os
 import sqlite3
-import subprocess
 import time
 
 import Adafruit_DHT
 from miio import ChuangmiPlug
 
-Goodvalues = ['True', 'False']
+Goodvalues = [True, False]
 
 
 def responseformat(resp):
@@ -14,6 +14,22 @@ def responseformat(resp):
         return resp
     else:
         return "nan"
+
+
+if not os.path.exists('temperature.db'):
+    conn = sqlite3.connect('temperature.db')
+    cur = conn.cursor()
+    # Make some fresh tables using executescript()
+    cur.executescript('''CREATE TABLE "timelog" (
+    "stamp"	TEXT,
+    "temp"	NUMERIC,
+    "hum"	NUMERIC,
+    "plug"	INTEGER,
+    "heater"	INTEGER,
+    PRIMARY KEY("stamp")
+    );''')
+    conn.commit()
+    cur.close()
 
 
 def add_data(temp_inp, hum_inp, plug_status, heater_status, cur_time):
@@ -45,24 +61,15 @@ heater = ChuangmiPlug(ip_h, token_h, model="chuangmi.plug.m3")
 print(heater.status().is_on)
 
 while True:
-    result1 = subprocess.run(['miplug', '--ip', ip_pl, '--token', token_pl, 'status'],
-                             stdout=subprocess.PIPE)
-    txt1 = result1.stdout.decode("utf-8")
-    status1 = txt1.split()[1]
-    print(status1)
+    status1 = plug.status().is_on
     status1 = responseformat(status1)
 
-    result2 = subprocess.run(['miplug', '--ip', ip_h, '--token', token_h, 'status'],
-                             stdout=subprocess.PIPE)
-    txt2 = result2.stdout.decode("utf-8")
-    status2 = txt2.split()[1]
-    print(status2)
-
+    status2 = heater.status().is_on
     status2 = responseformat(status2)
 
     hum, temp = Adafruit_DHT.read_retry(sensor, 4)
     # hum, temp = (1, 1)
     print('Temp: {} C humidity: {}'.format(temp, hum))
-    print(f'plug on? {status1}, heater on {status2}')
+    print('plug on? {}, heater on {}'.format(status1, status2))
     add_data(temp, hum, status1, status2, datetime.datetime.now())
     time.sleep(1)
