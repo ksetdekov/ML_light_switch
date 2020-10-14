@@ -1,10 +1,11 @@
 import datetime
 import sqlite3
+import time
 
-import Adafruit_DHT
+# import Adafruit_DHT
 from miio import ChuangmiPlug
 
-Goodvalues = ['True', 'False']
+Goodvalues = [True, False]
 
 
 def responseformat(resp):
@@ -28,7 +29,7 @@ def add_data(temp_inp, hum_inp, plug_status, heater_status, cur_time):
         print("Error while working with sqlite", error)
 
 
-sensor = Adafruit_DHT.DHT11
+# sensor = Adafruit_DHT.DHT11
 
 # plug
 ip = '192.168.1.2'
@@ -44,11 +45,17 @@ print(heater.status().is_on)
 
 while True:
     status1 = plug.status().is_on
+    print(status1)
     status1 = responseformat(status1)
 
     status2 = heater.status().is_on
+    print(status2)
+
     status2 = responseformat(status2)
 
-    hum, temp = Adafruit_DHT.read_retry(sensor, 4)
+    # hum, temp = Adafruit_DHT.read_retry(sensor, 4)
+    hum, temp = (1, 1)
     print('Temp: {} C humidity: {}'.format(temp, hum))
+    print(f'plug on? {status1}, heater on {status2}')
     add_data(temp, hum, status1, status2, datetime.datetime.now())
+    time.sleep(1)
