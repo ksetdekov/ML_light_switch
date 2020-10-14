@@ -1,31 +1,12 @@
-import subprocess
-from time import strftime, time
+import datetime
+import os
+import sqlite3
+import time
 
-import matplotlib.pyplot as plt
+import Adafruit_DHT
 from miio import ChuangmiPlug
 
-from getlocation import string_distances
-
-plt.ion()
-x = []
-y = []
-
-
-def write_status(st1, st2, st3):
-    with open("/home/pi/Documents/testing/status.csv", "a") as log:
-        log.write("{0},{1}\n".format(strftime("%Y-%m-%d %H:%M:%S"), str(",".join([st1, st2, st3]))))
-
-
-def graph(variable1):
-    y.append(variable1)
-    x.append(time())
-    plt.clf()
-    plt.scatter(x, y)
-    plt.plot(x, y)
-    plt.draw()
-
-
-Goodvalues = ['True', 'False']
+Goodvalues = [True, False]
 
 
 def responseformat(resp):
@@ -35,31 +16,60 @@ def responseformat(resp):
         return "nan"
 
 
-ip1 = '192.168.1.4'
-token1 = 'e1ef4f9f97aaf257f54270adf2d998f3'
-plug1 = ChuangmiPlug(ip1, token1, model="chuangmi.plug.m3")
+if not os.path.exists('temperature.db'):
+    conn = sqlite3.connect('temperature.db')
+    cur = conn.cursor()
+    # Make some fresh tables using executescript()
+    cur.executescript('''CREATE TABLE "timelog" (
+    "stamp"	TEXT,
+    "temp"	NUMERIC,
+    "hum"	NUMERIC,
+    "plug"	INTEGER,
+    "heater"	INTEGER,
+    PRIMARY KEY("stamp")
+    );''')
+    conn.commit()
+    cur.close()
 
-ip2 = '192.168.1.5'
-token2 = '9a959331e150c3a6919df3433952938e'
-plug2 = ChuangmiPlug(ip2, token2, model="chuangmi.plug.m3")
+
+def add_data(temp_inp, hum_inp, plug_status, heater_status, cur_time):
+    try:
+        sqlite_con = sqlite3.connect('temperature.db')
+        cursor = sqlite_con.cursor()
+        sqlite_insert = """INSERT INTO 'timelog'
+                ('stamp', 'temp', 'hum', 'plug', 'heater')
+                VALUES (?, ?, ?, ?, ?);"""
+        data_tuple = (cur_time, temp_inp, hum_inp, plug_status, heater_status)
+        cursor.execute(sqlite_insert, data_tuple)
+        sqlite_con.commit()
+    except sqlite3.Error as error:
+        print("Error while working with sqlite", error)
+
+
+sensor = Adafruit_DHT.DHT11
+
+# plug
+ip_pl = '192.168.1.2'
+token_pl = 'e1ef4f9f97aaf257f54270adf2d998f3'
+plug = ChuangmiPlug(ip_pl, token_pl, model="chuangmi.plug.m3")
+print(plug.status().is_on)
+
+# heater
+ip_h = '192.168.1.26'
+token_h = "9881554e0c43a4f45a28823adf3d0825"
+heater = ChuangmiPlug(ip_h, token_h, model="chuangmi.plug.m3")
+print(heater.status().is_on)
 
 while True:
-    result1 = subprocess.run(['miplug', '--ip', "192.168.1.4", '--token', "e1ef4f9f97aaf257f54270adf2d998f3", 'status'],
-                             stdout=subprocess.PIPE)
-    txt1 = result1.stdout.decode("utf-8")
-    status1 = txt1.split()[1]
+    status1 = plug.status().is_on
     status1 = responseformat(status1)
 
-    result2 = subprocess.run(['miplug', '--ip', "192.168.1.5", '--token', "9a959331e150c3a6919df3433952938e", 'status'],
-                             stdout=subprocess.PIPE)
-    txt2 = result2.stdout.decode("utf-8")
-    status2 = txt2.split()[1]
+    status2 = heater.status().is_on
     status2 = responseformat(status2)
-    try:
-        distances = string_distances()
-    except (OSError, ConnectionError):
-        distances = str(",".join(["None", "None", "None", "None", "None", "None", "None", "None"]))
 
-    write_status(status1, status2, distances)
-    # graph(status1)
-    plt.pause(60)
+    hum, temp = Adafruit_DHT.read_retry(sensor, 4)
+    # hum, temp = (1, 1)
+    print('Temp: {} C humidity: {}'.format(temp, hum))
+    print('plug on? {}, heater on {}'.format(status1, status2))
+    add_data(temp, hum, status1, status2, datetime.datetime.now())
+    time.sleep(1)
