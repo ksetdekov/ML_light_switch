@@ -1,11 +1,12 @@
 import os
-os.chdir('/home/pi/Documents/')
+
 import datetime
 import sqlite3
 import time
-
 import Adafruit_DHT
 from miio import ChuangmiPlug
+
+os.chdir('/home/pi/Documents/ML_light_switch/')
 
 Goodvalues = [True, False]
 
