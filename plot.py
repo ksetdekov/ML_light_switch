@@ -38,3 +38,5 @@ plt.hist(pd_heater_off[1], bins, alpha=0.5, label='off_heater')
 plt.legend(loc='upper right')
 plt.tight_layout()
 plt.show()
+
+print(pd_heater_on.head())
