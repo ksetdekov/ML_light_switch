@@ -1,5 +1,6 @@
-import datetime
 import os
+os.chdir('/home/pi/Documents/')
+import datetime
 import sqlite3
 import time
 
@@ -21,11 +22,11 @@ if not os.path.exists('temperature.db'):
     cur = conn.cursor()
     # Make some fresh tables using executescript()
     cur.executescript('''CREATE TABLE "timelog" (
-    "stamp"	TEXT,
-    "temp"	NUMERIC,
-    "hum"	NUMERIC,
-    "plug"	INTEGER,
-    "heater"	INTEGER,
+    "stamp" TEXT,
+    "temp"  NUMERIC,
+    "hum"   NUMERIC,
+    "plug"  INTEGER,
+    "heater"    INTEGER,
     PRIMARY KEY("stamp")
     );''')
     conn.commit()
