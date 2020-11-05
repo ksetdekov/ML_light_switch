@@ -18,7 +18,7 @@ def add_data(temp_inp, hum_inp, cur_time):
         print("Error while working with sqlite", error)
 
 
-sensor = Adafruit_DHT.DHT11
+sensor = Adafruit_DHT.DHT22
 while True:
     hum, temp = Adafruit_DHT.read_retry(sensor, 4)
     print('Temp: {} C humidity: {}'.format(temp, hum))

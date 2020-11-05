@@ -1,8 +1,8 @@
-import os
-
 import datetime
+import os
 import sqlite3
 import time
+
 import Adafruit_DHT
 from miio import ChuangmiPlug
 
@@ -48,7 +48,7 @@ def add_data(temp_inp, hum_inp, plug_status, heater_status, cur_time):
         print("Error while working with sqlite", error)
 
 
-sensor = Adafruit_DHT.DHT11
+sensor = Adafruit_DHT.DHT22
 
 # plug
 ip_pl = '192.168.1.2'
