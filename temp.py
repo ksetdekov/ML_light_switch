@@ -1,4 +1,5 @@
 import grovepi
+# todo switch from grovepi to adafruit
 import math
 import numpy
 import threading
