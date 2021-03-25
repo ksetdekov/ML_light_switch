@@ -1,6 +1,3 @@
-locationsharinglib>=4.1.0
-mapscookiegettercli
-
 matplotlib>3.1.3
 python-miio
 -e git+https://github.com/nathanrooy/spatial-analysis.git#egg=spatial
@@ -13,3 +10,4 @@ PySocks
 requests
 urllib3
 Adafruit_DHT
+adafruit-circuitpython-dht
