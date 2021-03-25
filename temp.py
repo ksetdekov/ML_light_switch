@@ -1,20 +1,19 @@
-import adafruit_dht
-from board import
-
-4
 import math
-import numpy
 import threading
-from time import sleep
 from datetime import datetime
+from time import sleep
+
+import adafruit_dht
+import numpy
 
 sensor = 4  # The Sensor goes on digital port 4.
 
 filtered_temperature = []  # here we keep the temperature values after removing outliers
 filtered_humidity = []  # here we keep the filtered humidity values after removing the outliers
 
-lock = threading.Lock() # we are using locks so we don't have conflicts while accessing the shared variables
-event = threading.Event() # we are using an event so we can close the thread as soon as KeyboardInterrupt is raised
+lock = threading.Lock()  # we are using locks so we don't have conflicts while accessing the shared variables
+event = threading.Event()  # we are using an event so we can close the thread as soon as KeyboardInterrupt is raised
+
 
 # function which eliminates the noise
 # by using a statistical model
