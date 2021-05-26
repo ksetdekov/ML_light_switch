@@ -13,3 +13,6 @@ PySocks
 requests
 urllib3
 Adafruit_DHT
+
+pystan==2.19.1.1
+fbprophet
